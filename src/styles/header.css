@@ -1,0 +1,32 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #000;
+    color: #fff;
+    border-bottom: 2px solid purple;
+    height: 50px;
+  }
+  
+  .header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    margin: 0;
+  }
+  
+  .logout-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    color: white;
+    background-color: purple;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: rgb(98, 0, 98);
+  }
+  

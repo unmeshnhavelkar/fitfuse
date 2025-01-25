@@ -41,54 +41,61 @@ const Signup = () => {
   };
 
   return (
-    <div className="signup-container">
-      <h2>Create an Account</h2>
-      {error && <p className="error">{error}</p>}
+    <div className="signup-page">
 
-      <form onSubmit={handleSignup} className="form-container">
-        <div className="input-group">
-          <input
-            type="text"
-            id="username"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-          />
-        </div>
+  <div className="logo-div"><h1>Fitfuse</h1></div>
 
-        <div className="input-group">
-          <input
-            type="email"
-            id="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
+  <div className="signup-container">
+    <h2>Create an Account</h2>
+    {error && <p className="error">{error}</p>}
 
-        <div className="input-group">
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-
-        <button type="submit" className="form-button">Sign Up</button>
-      </form>
-
-      <div className="switch-auth">
-        Already have an account?{" "}
-        <span className="switch-link" onClick={() => navigate("/login")}>
-          Log In
-        </span>
+    <form onSubmit={handleSignup} className="form-container">
+      <div className="input-group">
+        <input
+          type="text"
+          id="username"
+          placeholder="Username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+          required
+        />
       </div>
+
+      <div className="input-group">
+        <input
+          type="email"
+          id="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+      </div>
+
+      <div className="input-group">
+        <input
+          type="password"
+          id="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+      </div>
+
+      <button type="submit" className="form-button">Sign Up</button>
+    </form>
+
+    <div className="switch-auth">
+      Already have an account?{" "}
+      <span className="switch-link" onClick={() => navigate("/login")}>
+        Log In
+      </span>
     </div>
+  </div>
+
+</div>
+
   );
 };
 

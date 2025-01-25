@@ -2,7 +2,8 @@ import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase";
 import { useNavigate } from "react-router-dom";
-import "../styles/signup.css"; // Keep this for consistency
+import "../styles/login.css"; 
+
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -29,41 +30,49 @@ const Login = () => {
   };
 
   return (
-    <div className="login-container">
-      <h2>Login to Your Account</h2>
-      {error && <p className="error">{error}</p>}
+    
+    <div className="login-page">
 
-      <form onSubmit={handleLogin} className="form-container">
-        <div className="input-group">
-          <input
-            type="email"
-            id="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+      <div className="logo-div"><h1>Fitfuse</h1></div>
+
+
+      <div className="login-container">
+
+        <h2>Login to Your Account</h2>
+        {error && <p className="error">{error}</p>}
+
+        <form onSubmit={handleLogin} className="form-container">
+          <div className="input-group">
+            <input
+              type="email"
+              id="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="input-group">
+            <input
+              type="password"
+              id="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+
+          <button type="submit" className="form-button">Log In</button>
+        </form>
+
+        <div className="switch-auth">
+          Don’t have an account?{" "}
+          <span className="switch-link" onClick={() => navigate("/signup")}>
+            Sign Up
+          </span>
         </div>
-
-        <div className="input-group">
-          <input
-            type="password"
-            id="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-
-        <button type="submit" className="form-button">Log In</button>
-      </form>
-
-      <div className="switch-auth">
-        Don’t have an account?{" "}
-        <span className="switch-link" onClick={() => navigate("/signup")}>
-          Sign Up
-        </span>
       </div>
     </div>
   );

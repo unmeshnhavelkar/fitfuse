@@ -1,31 +1,40 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from 'react';
+import { auth } from '../firebase';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
+import Header from '../components/header';
 
 const Dashboard = () => {
-  const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [error, setError] = useState('');
 
-  const handleLogout = () => {
-    localStorage.removeItem("user"); // Remove user from localStorage (or your auth logic)
-    navigate("/login"); // Redirect to login
-  };
+  useEffect(() => {
+    const fetchUserData = async () => {
+      const user = auth.currentUser;
+      if (user) {
+        try {
+          // Fetch user data from Firestore
+          const userDoc = await getDoc(doc(db, 'users', user.uid));
+          if (userDoc.exists()) {
+            setUsername(userDoc.data().username); // Store the username
+          }
+        } catch (err) {
+          setError('Error fetching user data');
+        }
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>Welcome to the Dashboard</h1>
-      <p>This page is protected and accessible only after logging in.</p>
-      <button
-        onClick={handleLogout}
-        style={{
-          padding: "10px 20px",
-          backgroundColor: "#007bff",
-          color: "white",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-        }}
-      >
-        Log Out
-      </button>
+    <div>
+      <Header username={username} /> {/* Pass username to Header */}
+      <div>
+        {error && <p>{error}</p>}
+        <h1>Welcome to your Dashboard</h1>
+        {/* Other dashboard content */}
+      </div>
     </div>
   );
 };
