@@ -13,20 +13,47 @@
     font-family: 'Bebas Neue', sans-serif;
     font-size: 30px;
     margin: 0;
+    margin-left: 20px;
+  }
+  
+  .header h1:hover{
+    cursor: pointer;
+  }
+
+  .header-right-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .prof-icon{
+    margin-right: 20px;
+    height: 30px;
+    transition: all 0.3s ease-in-out;
+  }
+
+  .prof-icon:hover{
+    border: 0px solid purple;
+    border-radius: 15px;
+    box-shadow: 0 0 20px 1px purple;
+    cursor: pointer;
   }
   
   .logout-button {
     padding: 8px 16px;
+    margin-right: 20px;
     font-size: 14px;
     color: white;
     background-color: purple;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease-in-out;
   }
   
   .logout-button:hover {
-    background-color: rgb(98, 0, 98);
+    border: 0px solid purple;
+    box-shadow: 0 0 20px 1px purple;
   }
   

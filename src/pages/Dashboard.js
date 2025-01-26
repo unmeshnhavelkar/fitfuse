@@ -3,10 +3,13 @@ import { auth } from '../firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import { db } from '../firebase';
 import Header from '../components/header';
+import '../styles/dashboard.css';
 
 const Dashboard = () => {
   const [username, setUsername] = useState('');
   const [error, setError] = useState('');
+
+  
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -27,13 +30,15 @@ const Dashboard = () => {
     fetchUserData();
   }, []);
 
+  
+  
+
   return (
     <div>
-      <Header username={username} /> {/* Pass username to Header */}
-      <div>
-        {error && <p>{error}</p>}
-        <h1>Welcome to your Dashboard</h1>
-        {/* Other dashboard content */}
+      <Header username={username} /> 
+      <div className='dashboard-div'>
+        
+        
       </div>
     </div>
   );

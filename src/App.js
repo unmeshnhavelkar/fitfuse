@@ -2,7 +2,8 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom"; // No need to import BrowserRouter here
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
-import Dashboard from "./pages/Dashboard"; // Import Dashboard component
+import Dashboard from "./pages/Dashboard"; 
+import Profile from "./pages/Profile"; 
 import "./App.css";
 
 const App = () => {
@@ -20,12 +21,22 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
 
+
+
         {/* Protected route: Only accessible when logged in */}
         <Route
           path="/dashboard"
           element={isLoggedIn() ? <Dashboard /> : <Navigate to="/login" />}
         />
+
+        <Route
+          path="/profile"
+          element={isLoggedIn() ? <Profile /> : <Navigate to="/login" />}
+        />
+
       </Routes>
+
+
     </div>
   );
 };

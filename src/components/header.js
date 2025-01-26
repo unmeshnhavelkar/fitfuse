@@ -1,30 +1,35 @@
-import React from 'react';
-import { signOut } from 'firebase/auth';
-import { auth } from '../firebase';
-import { useNavigate } from 'react-router-dom';
-import '../styles/header.css';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import "../styles/header.css";
 
-const Header = ({ username }) => {
+const Header = ({ username, showGreeting = true }) => {
   const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth); // Sign out the user
-      navigate('/login'); // Redirect to login page after logout
-    } catch (error) {
-      console.error('Logout failed', error);
-    }
+  const handleLogout = () => {
+    localStorage.removeItem("user"); // Remove user data from localStorage
+    navigate("/login");
   };
 
   return (
     <div className="header">
-      <h1>Fitfuse</h1>
-      <div>Hi {username}</div>
-      <button className="logout-button" onClick={handleLogout}>Logout</button>
+      <div>
+        <h1 onClick={()=>navigate("/dashboard")}>Fitfuse</h1>
+      </div>
+
+      {showGreeting && <div>Hi, {username}</div>}
+
+      <div className="header-right-container">
+        <img
+          src="/profile-icon.svg"
+          className="prof-icon"
+          onClick={() => navigate("/profile")}
+        />
+        <button className="logout-button" onClick={handleLogout}>
+          Logout
+        </button>
+      </div>
     </div>
   );
 };
 
 export default Header;
-
-

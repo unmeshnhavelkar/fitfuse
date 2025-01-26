@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+/* Hide default scrollbar but allow scrolling */
+
+
+::-webkit-scrollbar {
+  width: 0px;  /* Hides the scrollbar */
+  height: 0px; /* Hides the horizontal scrollbar if needed */
+}
+
+
